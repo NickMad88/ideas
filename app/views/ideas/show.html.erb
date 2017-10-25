@@ -1,0 +1,22 @@
+<a href="/ideas">Go Back to the Ideas!</a>
+<br>
+<form action="/sessions/<%= current_user.id %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Logout">
+</form>
+<br>
+<a href="/users/<%= @idea.user.id %>"><%= @idea.user.first_name %> </a> says:
+<div class="idea">
+<%= @idea.content %>
+</div>
+
+<h3>People who have liked this idea:</h3>
+
+<div class="idea">
+<% @idea.likes.each do |like| %>
+
+  <a href="/users/<%= like.user.id %>"><%= like.user.first_name %></a> liked this.
+  <br>
+<% end %>
+</div>

@@ -1,0 +1,19 @@
+Name: <%= @user.first_name %>
+<br>
+Last Name: <%= @user.last_name %>
+<br>
+Email: <%= @user.email %>
+<br>
+<br>
+Total number of posts: <%= @user.ideas.count %>
+<br>
+Total number of likes: <%= @user.likes.count %>
+
+<br>
+<br>
+<a href="/ideas">Go Back to the Ideas!</a>
+<form action="/sessions/<%= current_user.id %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Logout">
+</form>
